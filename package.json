@@ -4,9 +4,10 @@
   "description": "name",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode production --open",
+    "start": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "watch": "webpack --watch",
+    "watch-d": "webpack --watch development",
+    "watch-p": "webpack --watch production",
     "server": "live-server src",
     "lint": "eslint .",
     "test": "jest --coverage",
