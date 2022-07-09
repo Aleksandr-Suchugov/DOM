@@ -3,7 +3,7 @@ export default class goblinGame {
   constructor() {
     this.position = -1;
     this.field = 0;
-    this.boarSize = 0;
+    this.boarSize = 1;
   }
 
   goblinSetter() {
