@@ -6,7 +6,8 @@ module.exports = {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '',
+    filename: 'index.js',
+    publicPath: 'dist/',
   },
   module: {
     rules: [
@@ -28,7 +29,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
+          MiniCssExtractPlugin.loader, 'css-loader', 'style-loader'
         ],
       },
       {
@@ -49,6 +50,17 @@ module.exports = {
         test: /\.svg$/,
         type: 'asset/resource',
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -61,4 +73,12 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
   ],
+  devServer: {
+    overlay: true,
+    contentBase: './src',
+  },
+
+  entry: {
+    app: './src/js/app.js',
+  },
 };
